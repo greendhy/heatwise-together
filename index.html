@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HeatWise Together</title>
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="9" fill="%231a5d63"/><circle cx="44" cy="20" r="9" fill="%23ffd166"/><path d="M13 46c9-13 18-18 33-21" fill="none" stroke="%23ffffff" stroke-width="7" stroke-linecap="round"/><path d="M18 48h30" stroke="%23f26d5b" stroke-width="7" stroke-linecap="round"/></svg>'>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48">
+          <circle cx="33" cy="14" r="7"></circle>
+          <path d="M8 34c8-10 17-15 30-18"></path>
+          <path d="M12 37h28"></path>
+        </svg>
+      </span>
+      <div>
+        <p class="eyebrow">Online climate communication tool</p>
+        <h1>HeatWise Together</h1>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Project tabs">
+      <button class="tab is-active" type="button" data-view="builder">Build Card</button>
+      <button class="tab" type="button" data-view="evidence">Need & Fit</button>
+      <button class="tab" type="button" data-view="library">Public Library</button>
+      <button class="tab" type="button" data-view="launch">Launch Plan</button>
+      <button class="tab" type="button" data-view="grant">Grant Copy</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="view is-active" id="view-builder">
+      <div class="builder-grid">
+        <section class="panel form-panel" aria-labelledby="builder-title">
+          <p class="eyebrow">Card generator</p>
+          <h2 id="builder-title">Turn a climate alert into a simple action card</h2>
+          <form id="card-form">
+            <div class="live-box">
+              <div>
+                <p class="eyebrow">Live public data</p>
+                <p class="body-copy">Use city search or browser location to pull current weather from Open-Meteo. No account, no backend, no personal data storage.</p>
+              </div>
+              <label>
+                City
+                <input id="city-search" type="text" value="Guangzhou" maxlength="58" autocomplete="off">
+              </label>
+              <div class="button-pair">
+                <button class="ghost-button" id="use-city" type="button">Use City Data</button>
+                <button class="ghost-button" id="use-location" type="button">Use My Location</button>
+              </div>
+              <p class="status-line" id="live-status">Demo starts with editable sample text.</p>
+            </div>
+            <label>
+              Risk type
+              <select id="risk-type" name="risk-type">
+                <option>Extreme heat</option>
+                <option>Wildfire smoke</option>
+                <option>Heavy rain</option>
+                <option>Power outage during heat</option>
+              </select>
+            </label>
+            <label>
+              Audience
+              <select id="audience" name="audience">
+                <option>Older adult living alone</option>
+                <option>Family caregiver</option>
+                <option>Community volunteer</option>
+                <option>Senior center staff</option>
+              </select>
+            </label>
+            <label>
+              Location label
+              <input id="location" name="location" value="Guangzhou apartment block" maxlength="52">
+            </label>
+            <label>
+              Alert text or public notice
+              <textarea id="alert-text" name="alert-text" maxlength="420">Tomorrow afternoon will be very hot. Outdoor activity should be reduced. Please check on older neighbors and keep drinking water nearby.</textarea>
+            </label>
+            <fieldset>
+              <legend>Accessibility mode</legend>
+              <label class="check-row">
+                <input type="checkbox" id="large-type" checked>
+                Large text
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="plain-language" checked>
+                Plain language
+              </label>
+              <label class="check-row">
+                <input type="checkbox" id="care-check" checked>
+                Care check-in list
+              </label>
+            </fieldset>
+            <button class="primary-button" type="submit">Generate Card</button>
+          </form>
+        </section>
+
+        <section class="panel card-panel" aria-labelledby="card-title">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Shareable output</p>
+              <h2 id="card-title">Today's HeatWise card</h2>
+            </div>
+            <button class="ghost-button" id="copy-card" type="button">Copy Text</button>
+          </div>
+          <article class="action-card" id="action-card">
+            <div class="card-top">
+              <span class="risk-pill" id="risk-pill">Extreme heat</span>
+              <span id="card-location">Guangzhou apartment block</span>
+            </div>
+            <h3 id="card-heading">Make the afternoon safer</h3>
+            <p id="card-summary">A hot day can become dangerous before it feels dramatic. Keep the plan small: cool room, water nearby, and one check-in.</p>
+            <ul id="action-list"></ul>
+            <div class="care-strip">
+              <strong>Care check:</strong>
+              <span id="care-copy">Send this card to one older neighbor or relative before noon.</span>
+            </div>
+          </article>
+          <p class="note">Prototype only. It does not replace local emergency guidance or medical advice.</p>
+          <p class="note" id="data-note">Current demo card is generated from editable sample text.</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="view-evidence">
+      <div class="evidence-grid">
+        <section class="panel">
+          <p class="eyebrow">Verified need</p>
+          <h2>Older adults need clearer climate-risk actions</h2>
+          <div class="evidence-list">
+            <article>
+              <strong>Heat risk is growing globally</strong>
+              <p>WHO reports that heat exposure is rising in all world regions and that heat-related mortality among people over 65 increased sharply between 2000-2004 and 2017-2021.</p>
+              <a href="https://www.who.int/news-room/fact-sheets/detail/climate-change-heat-and-health" target="_blank" rel="noreferrer">WHO heat and health</a>
+            </article>
+            <article>
+              <strong>Older adults are a named high-risk group</strong>
+              <p>CDC identifies people aged 65+ as more prone to heat-related health problems and points caregivers toward hot-day safety steps.</p>
+              <a href="https://www.cdc.gov/heat-health/risk-factors/index.html" target="_blank" rel="noreferrer">CDC heat-risk factors</a>
+            </article>
+            <article>
+              <strong>Check-ins are an official recommendation</strong>
+              <p>EPA recommends checking in with elderly loved ones or neighbors, especially those living alone or with health conditions, during extreme weather.</p>
+              <a href="https://www.epa.gov/climateimpacts/climate-change-and-health-older-adults" target="_blank" rel="noreferrer">EPA older adults and climate</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel">
+          <p class="eyebrow">Funder fit</p>
+          <h2>Designed for Conservation and Climate</h2>
+          <div class="fit-score">
+            <div><span>Yes</span><p>Climate change and environmental communication</p></div>
+            <div><span>Yes</span><p>Individual/small-team project close to implementation</p></div>
+            <div><span>Yes</span><p>$1,000 tipping point with detailed launch budget</p></div>
+            <div><span>No</span><p>No salary, travel, marketing, politics, religion, or personal expense</p></div>
+          </div>
+          <p class="body-copy">The project avoids the crowded categories this chapter warns about, such as routine tree planting, upcycling, cleanups, beekeeping, and community gardens. It is a focused, online climate communication tool that can be reused beyond one local community.</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="view-library">
+      <div class="library-grid">
+        <section class="panel">
+          <p class="eyebrow">Reusable public assets</p>
+          <h2>Open climate cards</h2>
+          <p class="body-copy">Each card can be copied into WeChat, email, SMS, a community website, or a senior center notice. The public version will be free, low-bandwidth, and usable without logging in.</p>
+          <div class="asset-list" id="asset-list"></div>
+        </section>
+        <section class="panel">
+          <p class="eyebrow">Why it matters</p>
+          <h2>Climate information is often too hard to act on</h2>
+          <div class="story-stack">
+            <article>
+              <strong>Problem</strong>
+              <p>Alerts are written for agencies, not for an older person deciding what to do in the next three hours.</p>
+            </article>
+            <article>
+              <strong>Intervention</strong>
+              <p>Convert the alert into three immediate actions, one care check, and a shareable large-type card.</p>
+            </article>
+            <article>
+              <strong>Public benefit</strong>
+              <p>Families, volunteers, and local groups can reuse the cards before heat, smoke, rain, or outage events.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="view-launch">
+      <div class="launch-grid">
+        <section class="panel">
+          <p class="eyebrow">Four-week online launch</p>
+          <h2>Built to be live quickly</h2>
+          <ol class="timeline">
+            <li><span>Week 1</span> Finish the public card generator, static hosting, privacy page, and bilingual templates.</li>
+            <li><span>Week 2</span> Test cards with older users, caregivers, and accessibility reviewers; improve large-type and screen-reader flow.</li>
+            <li><span>Week 3</span> Add public card library, copy/share workflow, analytics-free feedback form, and backup hosting.</li>
+            <li><span>Week 4</span> Publish the free site, release the templates, document the pilot, and invite community reuse.</li>
+          </ol>
+        </section>
+        <section class="panel">
+          <p class="eyebrow">Budget</p>
+          <h2>$1,000 use of funds</h2>
+          <div id="budget"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="view-grant">
+      <div class="grant-grid">
+        <section class="panel">
+          <p class="eyebrow">Best-fit chapter</p>
+          <h2>Conservation and Climate</h2>
+          <p class="body-copy">This is an environmental communication project, not a medical service or a business. It helps people understand and act on climate risk, and the grant pays for launch infrastructure and accessibility validation.</p>
+          <dl>
+            <dt>Why online works from China</dt>
+            <dd>The project is not tied to a physical place. It can serve English-speaking caregivers, international volunteers, and Chinese communities through translated templates.</dd>
+            <dt>Why $1,000 matters</dt>
+            <dd>The prototype already exists. Funding turns it into a public, reliable, accessible service for one year of pilot use.</dd>
+            <dt>Risk to avoid</dt>
+            <dd>Do not describe the budget as generic operations. Describe it as a one-time public launch package: hosting, security, accessibility testing, and API credits.</dd>
+          </dl>
+        </section>
+        <section class="panel">
+          <p class="eyebrow">Submission-ready files</p>
+          <h2>What to send</h2>
+          <ul class="send-list">
+            <li>Project URL after hosting this prototype on GitHub Pages</li>
+            <li>One screenshot of the card generator</li>
+            <li>One screenshot of a generated large-type card</li>
+            <li>Application text from <code>application_draft.md</code></li>
+            <li>PayPal or Wise receiving details if selected</li>
+          </ul>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
